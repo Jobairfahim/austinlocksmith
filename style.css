@@ -122,16 +122,30 @@ ul {
     padding: 1rem 0;
 }
 
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex: 1;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .nav-brand h1 {
     color: #2c3e50;
     font-size: 1.5rem;
     margin: 0;
 }
 
-.nav-menu {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
+.logo {
+    height: 40px;
+    width: auto;
+    display: block;
 }
 
 .nav-link {
@@ -1087,6 +1101,18 @@ ul {
         left: 0;
     }
     
+    .nav-brand {
+        gap: 0.5rem;
+    }
+    
+    .logo {
+        height: 32px;
+    }
+    
+    .nav-brand h1 {
+        font-size: 1.2rem;
+    }
+    
     .nav-menu li {
         margin: 1rem 0;
     }
@@ -1100,6 +1126,9 @@ ul {
         justify-content: center;
         font-size: 1.1rem;
         padding: 10px 0;
+        cursor: pointer;
+        position: relative;
+        z-index: 10;
     }
     
     .dropdown-menu {
@@ -1114,6 +1143,8 @@ ul {
         padding: 0;
         border-radius: 8px;
         display: none;
+        width: 100%;
+        margin-left: 0;
     }
     
     .dropdown-menu.show {
@@ -1127,6 +1158,8 @@ ul {
         font-weight: 500;
         font-size: 1rem;
         text-align: center;
+        display: block;
+        width: 100%;
     }
     
     .dropdown-item:hover {
