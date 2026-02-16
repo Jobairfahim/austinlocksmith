@@ -1185,6 +1185,30 @@ ul {
     margin-bottom: 0.5rem;
 }
 
+.footer-map {
+    margin-top: 1.5rem;
+}
+
+.footer-map h4 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.map-container {
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.map-address {
+    color: #b8c5d6;
+    font-size: 0.9rem;
+    margin: 0;
+    text-align: center;
+}
+
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
