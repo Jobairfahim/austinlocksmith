@@ -11,15 +11,22 @@ hamburger.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
     
-    // Add touch event support for mobile
+    // Only add mobile dropdown functionality on screens <= 768px
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
+    
+    // Add touch event support for mobile only
     dropdownToggles.forEach(toggle => {
         // Remove existing listeners to prevent duplicates
         toggle.removeEventListener('click', handleDropdownToggle);
         toggle.removeEventListener('touchstart', handleDropdownToggle);
         
-        // Add both click and touch events
-        toggle.addEventListener('click', handleDropdownToggle);
-        toggle.addEventListener('touchstart', handleDropdownToggle);
+        // Only add events on mobile screens
+        if (isMobile()) {
+            toggle.addEventListener('click', handleDropdownToggle);
+            toggle.addEventListener('touchstart', handleDropdownToggle);
+        }
     });
     
     function handleDropdownToggle(e) {
@@ -29,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const dropdown = e.target.closest('.dropdown');
         const dropdownMenu = dropdown.querySelector('.dropdown-menu');
         
-        console.log('Dropdown clicked', dropdownMenu); // Debug log
+        console.log('Mobile dropdown clicked', dropdownMenu); // Debug log
         
         // Close other dropdowns
         document.querySelectorAll('.dropdown-menu').forEach(menu => {
@@ -43,13 +50,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (dropdownMenu.classList.contains('show')) {
             dropdownMenu.classList.remove('show');
             dropdownMenu.style.display = 'none';
-            console.log('Dropdown closed');
+            console.log('Mobile dropdown closed');
         } else {
             dropdownMenu.classList.add('show');
             dropdownMenu.style.display = 'block';
-            console.log('Dropdown opened');
+            console.log('Mobile dropdown opened');
         }
     }
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        if (!isMobile()) {
+            // Reset all dropdowns to CSS hover state on desktop
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.classList.remove('show');
+                menu.style.display = '';
+            });
+        }
+    });
 });
 
 // Close mobile dropdowns when clicking on dropdown items
